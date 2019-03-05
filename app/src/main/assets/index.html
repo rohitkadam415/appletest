@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Hello</title>
+
+    <style>
+      body, html {
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #F89821;
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 100px;
+      }
+
+
+
+
+    </style>
+
+    <script>
+			let music;
+           document.addEventListener('musickitloaded', function() {
+                   MusicKit.configure({
+    		developerToken: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikc2Q1k1UzQ2M0IifQ.eyJpYXQiOjE1NTAyMjgwMzQsImV4cCI6MTU2NTc4MDAzNCwiaXNzIjoiQzI2MkpFTk42QyJ9.xVwGFWVBAAJJnqCFZLi-Is38cH_2ypw_-XcHSHuBwu2HWiagC4aiZp6mRCGquy_-6hpTEpVdRS2KajlODzxkbA',
+    		app: {
+     			 name: 'Echome',
+      			build: '1.1'
+    		         }
+			});
+
+			music = MusicKit.getInstance();
+            authorize()
+				console.log("isAuthorised : "+music.isAuthorized);
+            });
+			// autorize token with user
+			function authorize()
+				{
+
+						music.authorize().then(function() {
+						if(music.isAuthorized)
+						{
+                                 window.close();
+                                 window.location.replace('echome://');
+                        }
+                       });
+
+				}
+
+			function play()
+				{
+				music.authorize().then(function() {
+					console.log("musicplayer : "+music.player)
+					music.player.play();
+				});
+				}
+			function userCloudAlbum()
+			{
+				music.authorize().then(function() {
+					music.api.library.albums.then(function(cloudAlbums) {
+						// user's cloudAlbums
+					});
+			});
+			}
+
+			 function showAndroidToast(toast) {
+                AndroidInterface.showToast(toast);
+                }
+
+                <!-- Getting value from Android -->
+                function showVersion(msg) {
+                    var myVar = AndroidInterface.getAndroidVersion();
+                    document.getElementById("version").innerHTML = msg + " You are running API Version " + myVar;
+                }
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+
+<div style="display:inline-grid">
+    <input type="button" value="Authorize" class="btn btn-default" onClick="authorize()"/>
+    <br/><br/>
+    <input type="button" value="Play" class="btn btn-primary" onClick="play()"/>
+    <br/><br/>
+    <input type="button" value="User Cloud Album" class="btn btn-primary"
+           onClick="userCloudAlbum()"/>
+    <br/><br/>
+
+
+    <input type="button" value="Say hello" class="btn btn-primary"
+           onClick="showAndroidToast('Hello Android!')"/>
+    <br/><br/>
+    <input type="button" value="Show Version" class="btn btn-primary"
+           onClick="showVersion('called within the html')"/>
+    <br/><br/>
+
+    <p id="version"></p>
+</div>
+<script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+</body>
+</html>
