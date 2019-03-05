@@ -23,6 +23,7 @@
 
 
 
+
     </style>
 
     <script>
@@ -38,18 +39,15 @@
 
 			music = MusicKit.getInstance();
             authorize()
-				console.log("isAuthorised : "+music.isAuthorized);
+				console.log(music);
             });
 			// autorize token with user
 			function authorize()
 				{
 
 						music.authorize().then(function() {
-						if(music.isAuthorized)
-						{
-                                 window.close();
-                                 window.location.replace('echome://');
-                        }
+						console.log("isAuthorized : "+music.isAuthorized);
+						console.log("musicUserToken : "+music.musicUserToken);
                        });
 
 				}
@@ -79,6 +77,7 @@
                     var myVar = AndroidInterface.getAndroidVersion();
                     document.getElementById("version").innerHTML = msg + " You are running API Version " + myVar;
                 }
+
 
 
 
