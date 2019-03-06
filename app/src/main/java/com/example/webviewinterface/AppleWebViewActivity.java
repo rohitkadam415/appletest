@@ -36,7 +36,7 @@ public class AppleWebViewActivity extends AppCompatActivity {
     webSettings.setJavaScriptEnabled(true);
     webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
     webSettings.setAllowFileAccess(true);
-    webSettings.setPluginState(WebSettings.PluginState.ON);
+    //webSettings.setPluginState(WebSettings.PluginState.ON);
     webSettings.setUseWideViewPort(true);
     webSettings.setAllowContentAccess(true);
     webSettings.setAllowFileAccess(true);
