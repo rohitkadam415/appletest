@@ -7,11 +7,11 @@ import android.widget.Toast;
 
 
 
-public class WebAppInterface {
+public class AppleWebAppInterface {
     Context mContext;
-    String TAG=WebAppInterface.class.getSimpleName();
+    String TAG=AppleWebAppInterface.class.getSimpleName();
     // Instantiate the interface and set the context
-    WebAppInterface(Context c) {
+    AppleWebAppInterface(Context c) {
         mContext = c;
     }
 
